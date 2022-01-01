@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ibm-problem"
+version = "0.1.0"
+description = ""
+authors = ["Bhupinder Saini <bhupinder.saini2.71@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7.1,<3.10"
+numpy = "^1.21.4"
+pandas = "^1.3.5"
+sklearn = "^0.0"
+seaborn = "^0.11.2"
+openpyxl = "^3.0.9"
+ipykernel = "^6.6.0"
+desdeo = "^1.1.3"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

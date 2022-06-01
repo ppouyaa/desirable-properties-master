@@ -76,7 +76,10 @@ def d2_spcing(df:np.ndarray):
     for i in range(0, size):
         temp = average - dist[i]
         sum_ += temp**2
-    return sqrt(sum_/(size-1))
+    if size -1 == 0:
+        return sqrt(sum_)
+    else:
+        return sqrt(sum_/(size-1))
 
 def distan_d3(ref_point:np.ndarray, population:np.ndarray, r:float, k:float, inside_ROI=[], outside_ROI=[]):
     """Calculate D3 in the paper, which is the distance between preferred solution

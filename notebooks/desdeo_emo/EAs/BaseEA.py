@@ -171,6 +171,7 @@ class BaseDecompositionEA(BaseEA):
         total_function_evaluations: int = 0,
         lattice_resolution: int = None,
         use_surrogates: bool = False,
+        translation_param: float = 0.2,
     ):
         super().__init__(
             a_priori=a_priori,
@@ -203,6 +204,7 @@ class BaseDecompositionEA(BaseEA):
             )
             self._function_evaluation_count += population_size
         self._ref_vectors_are_focused: bool = False
+        self.translation_param = translation_param
         # print("Using BaseDecompositionEA init")
 
     def _next_gen(self):
@@ -270,7 +272,7 @@ class BaseDecompositionEA(BaseEA):
             refpoint = refpoint - ideal
             norm = np.sqrt(np.sum(np.square(refpoint)))
             refpoint = refpoint / norm
-            self.reference_vectors.iteractive_adapt_3(refpoint)
+            self.reference_vectors.iteractive_adapt_3(refpoint, self.translation_param)
             self.reference_vectors.add_edge_vectors()
         elif isinstance(preference, PreferredSolutionPreference):
             self.reference_vectors.interactive_adapt_1(

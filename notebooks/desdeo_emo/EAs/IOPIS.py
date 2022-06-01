@@ -7,7 +7,7 @@ from desdeo_emo.population.Population import Population
 from desdeo_emo.selection.IOPIS_APD import IOPIS_APD_Select
 from desdeo_emo.selection.IOPIS_NSGAIII import IOPIS_NSGAIII_select
 from desdeo_problem import MOProblem
-from desdeo_tools.scalarization import StomASF, PointMethodASF, AugmentedGuessASF
+from desdeo_tools.scalarization import StomASF, PointMethodASF, AugmentedGuessASF, ReferencePointASF
 from desdeo_emo.utilities.ReferenceVectors import ReferenceVectors
 from desdeo_tools.interaction import (
     ReferencePointPreference,
@@ -55,10 +55,11 @@ class BaseIOPISDecompositionEA(BaseDecompositionEA, BaseEA):
             #     nadir=problem.nadir * problem._max_multiplier,
             #     ideal=problem.ideal * problem._max_multiplier,
             # ),
-            AugmentedGuessASF(
+            PointMethodASF(
                 nadir=problem.nadir * problem._max_multiplier,
                 ideal=problem.ideal * problem._max_multiplier,
-                indx_to_exclude=[],
+                rho = 0.001,
+                rho_sum = 0.001,
             ),
         ]
         if lattice_resolution is None:

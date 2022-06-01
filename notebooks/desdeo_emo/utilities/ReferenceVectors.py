@@ -119,7 +119,7 @@ class ReferenceVectors:
         self,
         lattice_resolution: int = None,
         number_of_objectives: int = None,
-        creation_type: str = "Uniform",
+        creation_type: str = "Focused",
         vector_type: str = "Spherical",
         ref_point: list = None,
     ):
